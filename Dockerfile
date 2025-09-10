@@ -22,8 +22,9 @@ WORKDIR /var/www
 # Copy app files
 COPY . .
 
-# Copy built frontend from Stage 1
-COPY --from=frontend /app/dist ./public/dist
+
+# Copy built frontend from Stage 1 (Laravel Vite default)
+COPY --from=frontend /app/public/build ./public/build
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
